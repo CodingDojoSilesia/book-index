@@ -40,18 +40,26 @@ def print_text_index(index: INDEX_TYPE):
 
 
 def print_html_index(index: INDEX_TYPE):
-    print("<style>table, th, td")
-    print("{ border: 1px solid black; border-collapse: collapse; }")
+    # IS NOT A GOOD EXAMPLE!
+    # FOR HTML YOU SHOULD USE TEMPLATE ENGINE
+    # LIKE JINJA2!
+    print("<style>")
+    print("div { margin: auto; }")
+    print("dt { font-weight: bold; }")
+    print("span { width: 20px; }")
     print("</style>")
-    print("<table>")
-    print("<tr><th>Word</th><th>Positions</th></tr>")
+    print("<div>")
+    print("<h1>INDEX</h2>")
+
+    print("<dl>")
     for word, positions in _sort_and_yield_index(index):
-        print("<tr>")
-        print(f"<th>{escape(word.capitalize())}</th>")
+        print(f"<dt>{escape(word.capitalize())}</dt>")
+        print("<dd><ul>")
         for row, col in positions:
-            print(f"<td>{row}, {col}</td>")
-        print("</tr>")
-    print("</table>")
+            print(f"<li><span>{row}</span>, <span>{col}</span></li>")
+        print("</ul></dd>")
+    print("</dl>")
+    print("</div>")
 
 
 def _sort_and_yield_index(index: INDEX_TYPE):
