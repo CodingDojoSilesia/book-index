@@ -19,16 +19,16 @@ def create_index(stream: TextIOBase) -> INDEX_TYPE:
     index: INDEX_TYPE = defaultdict(list)
     for row, line in enumerate(stream, start=1):
         line_index = create_index_from_line(line.strip())
-        for word, col in line_index.items():
+        for word, col in line_index:
             index[word].append((row, col))
 
     return index
 
 
-def create_index_from_line(line: str) -> Dict[str, int]:
-    return {
-        match.group(0).lower(): match.start() + 1 for match in RE_WORD.finditer(line)
-    }
+def create_index_from_line(line: str) -> Tuple[str, int]:
+    return (
+        (match.group(0).lower(), match.start() + 1) for match in RE_WORD.finditer(line)
+    )
 
 
 def print_text_index(index: INDEX_TYPE):
