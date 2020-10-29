@@ -88,8 +88,4 @@ Then you can
 2. Make a list of tuples, which each tuple has (word, row, col)
 3. Use these tuples to aggregate words with list of positions
 4. Think about non-words characters, and [conjunction](https://en.wikipedia.org/wiki/Conjunction_%28grammar%29) words
-5. Think about another formats like html, CSV oraz latex (default is a text format)
-
-## Protips
-
-TODO
+5. Think about another formats like html, CSV or latex (default is a text format)
